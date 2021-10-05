@@ -1,9 +1,9 @@
 fun main(){
-    var options = arrayOf("rock", "paper", "scissors");
+    val options = arrayOf("rock", "paper", "scissors");
 
-    var optionComputer = "rock"
-
-    var userInput = readLine()
+    val optionComputer = "rock"
+    println("choose your option: rock - paper - scissors")
+    val userInput = readLine()
 
     /* if (optionComputer == "rock"){
         if (userInput == "rock"){
