@@ -21,21 +21,20 @@ fun main(){
             "scissors" -> println("you lose")
             "rock" -> println("you win")
         }
-    }
-    if (userInput == "scissors"){
+    }else if (userInput == "scissors"){
         when (optionComputer){
             "paper" -> println("you win")
             "scissors" -> println("draw")
             "rock" -> println("you lose")
         }
-    }
-
-    if (userInput == "rock"){
+    }else if (userInput == "rock"){
         when (optionComputer){
             "paper" -> println("you lose")
             "scissors" -> println("you win")
             "rock" -> println("draw")
         }
+    } else {
+        println("invalid option")
     }
 
     println( "Computer chose $optionComputer");
