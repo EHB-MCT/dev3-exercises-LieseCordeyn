@@ -1,6 +1,7 @@
+
 fun main(){
     println("Ready to start your day?")
-    challengeOne()
+    challengeFour()
 }
 
 fun challengeOne(){
@@ -70,7 +71,26 @@ fun challengeThree(){
 
 }
 
+val computerInput = (0..100).random()
+
 fun challengeFour(){
+    println("Your at school, time to decide how active you will be today")
+    println("choose a number between 1 and 100")
+    var userInput = Integer.valueOf(readLine())
+
+    if(userInput == computerInput){
+        println("aahn yes, you chose the right amount of energy")
+        challengeFive()
+    } else if (userInput < computerInput){
+        println("Hmmm that's a really low energy-level, try picking a higher number")
+        challengeFour()
+    } else if (userInput > computerInput){
+        println("Hmmm that's a bit too much don't you think? Try picking a lower number")
+        challengeFour()
+    }
+}
+
+fun challengeFive(){
 
 }
 
