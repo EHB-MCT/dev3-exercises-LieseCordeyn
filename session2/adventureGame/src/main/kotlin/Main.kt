@@ -1,14 +1,14 @@
 
 fun main(){
     println("Ready to start your day?")
-    challengeFour()
+    challengeEndBoss()
 }
 
 fun challengeOne(){
     println("It's 7am, your alarm clock is making a terrible noise")
     println("How many times do you snooze?")
 
-    val rightAnswers = setOf<String>("none", "one time", "two times", "three times")
+    val rightAnswers = setOf("none", "one time", "two times", "three times")
 
     val userInput = readLine()
 
@@ -76,11 +76,11 @@ val computerInput = (0..100).random()
 fun challengeFour(){
     println("Your at school, time to decide how active you will be today")
     println("choose a number between 1 and 100")
-    var userInput = Integer.valueOf(readLine())
+    val userInput = Integer.valueOf(readLine())
 
     if(userInput == computerInput){
         println("aahn yes, you chose the right amount of energy")
-        challengeFive()
+        challengeEndBoss()
     } else if (userInput < computerInput){
         println("Hmmm that's a really low energy-level, try picking a higher number")
         challengeFour()
@@ -90,7 +90,18 @@ fun challengeFour(){
     }
 }
 
-fun challengeFive(){
+fun challengeEndBoss(){
+        println("Ready for your final battle?")
+        println("your teacher decided to do a random quiz")
+        println("Try guessing this anagram")
+
+    val anagrams = mapOf<String, String>("dusty" to "study", "maxes" to "exams", "dare" to "read")
+
+    println(anagrams.keys)
+    println(anagrams.values)
+
+
+
 
 }
 
