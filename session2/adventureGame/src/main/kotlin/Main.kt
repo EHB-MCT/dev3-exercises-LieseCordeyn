@@ -48,6 +48,29 @@ fun challengeTwo(){
 }
 
 fun challengeThree(){
+    println("You're ready to go to school, how are you going to school?")
+    println("You can choose between three options: on foot - with bike - with NMBS")
+    val userInput = readLine()
+
+    when(userInput){
+        "on foot" ->{
+            println("Oh no, you don't have enough energy, time to go back and drink some coffee muahaha")
+            challengeTwo()
+        }
+        "with bike" ->{
+            println("Good job! you chose the right thing and entered school in time")
+            challengeFour()
+        }
+        "with NMBS" ->{
+            println("seriously? You chose NMBS? Are you really that stupid? Ofcourse you are too late! You missed the whole day")
+            println("Try again tomorrow and hopefully you make a better choice")
+            gameOver()
+        }
+    }
+
+}
+
+fun challengeFour(){
 
 }
 
@@ -55,3 +78,5 @@ fun gameOver(){
     println("ready to try again?")
     challengeOne()
 }
+
+// co-creation with Britt, ps we didn't steal code :)
