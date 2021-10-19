@@ -4,15 +4,28 @@ fun main(){
     val bert = Teacher("Bert")
     val mike = Teacher ("Mike")
     val joey = Comedian("joey")
+    val sheep = Chatbot("sheep")
 
-    val persons = arrayOf(britt, liese, bert, mike, joey)
+    val persons = listOf(britt, liese, bert, mike, joey, sheep)
 
-    val randomPerson = persons.random()
+    var randomPerson = persons.random()
     randomPerson.introduce()
     when(randomPerson) {
         is Student -> randomPerson.gossip()
         is Teacher -> randomPerson.funfact()
         is Comedian -> randomPerson.joke()
+        is Chatbot -> randomPerson.chat()
     }
 
-}
+    randomPerson = persons.random()
+    randomPerson.introduce()
+    when(randomPerson) {
+        is Student -> randomPerson.gossip()
+        is Teacher -> randomPerson.funfact()
+        is Comedian -> randomPerson.joke()
+        is Chatbot -> randomPerson.chat()
+    }
+
+
+
+ }
