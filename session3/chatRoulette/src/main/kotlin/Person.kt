@@ -3,4 +3,7 @@ open abstract class Person(
 ) { open fun introduce(){
     println("Hello, my name is $name")
 }
+    open fun talk(){
+
+}
 }
