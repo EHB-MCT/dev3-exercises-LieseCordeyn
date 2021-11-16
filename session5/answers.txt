@@ -41,3 +41,23 @@ LIMIT 1
 
 THIRD BATCH
 ------------
+SELECT SUM(amount) FROM customers
+INNER JOIN payments ON payments.customerNumber = customers.customerNumber
+WHERE customers.contactFirstName = "William" AND customers.contactLastName = "Brown" AND paymentDate LIKE '2004%'
+	-38281.51
+
+SELECT firstName, lastName, customerName FROM customers
+INNER JOIN employees ON employees.employeeNumber = customers.salesRepEmployeeNumber
+	-Leslie	Jennings	The Sharp Gifts Warehouse
+	Leslie	Jennings	Corporate Gift Ideas Co.
+	Leslie	Jennings	Technics Stores Inc.
+	Leslie	Jennings	Mini Wheels Co.
+	Leslie	Jennings	Mini Gifts Distributors Ltd.
+
+SELECT customerName, offices.officeCode FROM customers
+INNER JOIN employees ON employees.employeeNumber = customers.salesRepEmployeeNumber
+INNER JOIN offices ON offices.officeCode = employees.officeCode
+WHERE customerName = "The Sharp Gifts Warehouse"
+	- officeCode 1
+
+
