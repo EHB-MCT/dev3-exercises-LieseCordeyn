@@ -1,27 +1,43 @@
 FIRST BATCH
-- 1956 Porsche 356A Coupe
-	SELECT productName FROM products
-	WHERE productCode = 'S24_3856'
-- €54.395182
-	SELECT AVG(buyPrice) FROM products
-- 15
-	SELECT productName FROM products WHERE productName LIKE '%Ford%'
-- 103.42
-	SELECT MAX(buyPrice) FROM products
-- 9
-	SELECT productName FROM products
-	WHERE productLine = "Ships"
+-----------
+
+SELECT productName FROM products WHERE productCode = 'S24_3856'
+	- 1956 Porsche 356A Coupe
+
+SELECT AVG(buyPrice) FROM products
+	- €54.395182
+
+SELECT productName FROM products WHERE productName LIKE '%Ford%'
+	- 15
+
+SELECT MAX(buyPrice) FROM products
+	- 103.42
+
+SELECT productName FROM products WHERE productLine = "Ships"
+	- 9
+
 
 SECOND BATCH
--
--
--
--
--
+------------
+SELECT * FROM orders WHERE customerNumber = 328
+	-3
+
+SELECT * FROM customers
+LEFT JOIN orders ON orders.customerNumber = customers.customerNumber
+WHERE customers.contactFirstName = "Julie" AND customers.contactLastName = "Young"
+	-3
+
+SELECT * FROM customers
+WHERE country = "USA" AND creditLimit = 0
+	-1
+
+SELECT customerName, AVG(amount) AS AVGamount FROM customers
+INNER JOIN payments ON payments.customerNumber = customers.customerNumber
+GROUP BY payments.customerNumber
+ORDER BY(AVGamount) DESC
+LIMIT 1
+	-Collectable Mini Designs Co.	80375.240000
+
 
 THIRD BATCH
--
--
--
--
--
+------------
