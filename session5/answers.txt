@@ -1,0 +1,27 @@
+FIRST BATCH
+- 1956 Porsche 356A Coupe
+	SELECT productName FROM products
+	WHERE productCode = 'S24_3856'
+- €54.395182
+	SELECT AVG(buyPrice) FROM products
+- 15
+	SELECT productName FROM products WHERE productName LIKE '%Ford%'
+- 103.42
+	SELECT MAX(buyPrice) FROM products
+- 9
+	SELECT productName FROM products
+	WHERE productLine = "Ships"
+
+SECOND BATCH
+-
+-
+-
+-
+-
+
+THIRD BATCH
+-
+-
+-
+-
+-
