@@ -19,5 +19,19 @@ fun main(){
                 credentials.databaseName,
         connectionProps)
 
+    //test data ophalen
+    val statement = connection.prepareStatement("SELECT * FROM 6_rides" + " " +
+            "LEFT JOIN 6_trains ON 6_trains.id = 6_rides.id_train" + " " +
+            "LEFT JOIN 6_cities ON 6_cities.id = 6_rides.arrival_city_id")
+    val result = statement.executeQuery()
+
+    while(result.next()) {
+        println(result.getString("name"))
+        println(result.getString("departure_time"))
+        println(result.getString("city_name"))
+
+    }
+
+
 
 }
