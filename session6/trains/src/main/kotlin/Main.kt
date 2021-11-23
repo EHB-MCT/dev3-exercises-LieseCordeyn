@@ -27,8 +27,8 @@ fun main(){
 
     while(result.next()) {
         println(result.getString("name"))
-        println(result.getString("departure_time"))
-        println(result.getString("city_name"))
+        println( "departure at " + result.getString("departure_time"))
+        println( "to " + result.getString("city_name"))
 
     }
 
