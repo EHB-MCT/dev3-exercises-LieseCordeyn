@@ -19,17 +19,20 @@ fun main(){
                 credentials.databaseName,
         connectionProps)
 
-    //test data ophalen
+    println("Waar wil je naartoe?")
+    val city = readLine()
+
+   //test data ophalen
     val statement = connection.prepareStatement("SELECT * FROM 6_rides" + " " +
             "LEFT JOIN 6_trains ON 6_trains.id = 6_rides.id_train" + " " +
-            "LEFT JOIN 6_cities ON 6_cities.id = 6_rides.arrival_city_id")
+            "LEFT JOIN 6_cities ON 6_cities.id = 6_rides.arrival_city_id" + " " +
+            "WHERE city_name = '$city' LIMIT 1")
     val result = statement.executeQuery()
 
     while(result.next()) {
-        println(result.getString("name"))
-        println( "departure at " + result.getString("departure_time"))
-        println( "to " + result.getString("city_name"))
-
+        println( "Naar:" + result.getString("city_name"))
+        println( "Om:" + result.getString("departure_time"))
+        println("Met:" + result.getString("name"))
     }
 
 
