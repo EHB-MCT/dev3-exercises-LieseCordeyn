@@ -23,12 +23,38 @@ class Duolingo {
 
  fun play(){
      words.shuffle()
-     val chosenWords = words.take(5)
-     chosenWords.forEach{
-         println("vertaal " + it.original + " in het Nederlands ")
+     val chosenWords = words.take(5).toMutableSet()
+
+     while(chosenWords.count() > 0){
+         val currentWord = chosenWords.random()
+         println("vertaal " + currentWord.original + " in het Nederlands")
+         val userInput = readLine()
+             if (userInput == currentWord.translated){
+                 println("Correct!")
+                 chosenWords.remove(currentWord)
+             } else {
+                 println("Helaas, " + currentWord.translated + " is het juiste antwoord, probeer straks eens opnieuw ")
+             }
+
+         when{
+             chosenWords.count()==0 -> println("Gefeliciteerd!")
+             chosenWords.count()>0 ->  println("Nog " +chosenWords.count()+ " woorden te vertalen")
+         }
+
+     }
+
+     println("Je hebt alle woorden vertaald! Type opnieuw om nog eens te spelen.")
+     val userInput2 = readLine()
+     if (userInput2 == "opnieuw"){
+         play()
+     } else {
+         println("Goodbye!")
+     }
+
      }
 
 
+
  }
-}
+
 
