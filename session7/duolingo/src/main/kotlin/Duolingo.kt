@@ -1,7 +1,5 @@
 class Duolingo {
- init{
-     val words = arrayOf(Word("cat", "kat", "Engels"),
-                         Word("chat", "kat","Frans"),
+     val words = mutableListOf<Word>(Word("cat", "kat", "Engels"), Word("chat", "kat","Frans"),
                          Word("dog", "hond","Engels"),
                          Word("chien", "hond","Frans"),
                          Word("bunny", "konijn","Engels"),
@@ -22,6 +20,15 @@ class Duolingo {
                          Word("serpent", "slang","Frans"),
 
      )
+
+ fun play(){
+     words.shuffle()
+     val chosenWords = words.take(5)
+     chosenWords.forEach{
+         println("vertaal " + it.original + " in het Nederlands ")
+     }
+
+
  }
 }
 
