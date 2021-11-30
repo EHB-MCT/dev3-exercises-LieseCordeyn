@@ -21,9 +21,9 @@ class Duolingo {
 
      )
 
- fun play(){
-     words.shuffle()
-     val chosenWords = words.take(5).toMutableSet()
+ fun play(rounds:Int, taal:String){
+     val chosenWords = words.filter{it.language == taal}.shuffled().take(rounds).toMutableSet()
+
 
      while(chosenWords.count() > 0){
          val currentWord = chosenWords.random()
@@ -46,7 +46,7 @@ class Duolingo {
      println("Je hebt alle woorden vertaald! Type opnieuw om nog eens te spelen.")
      val userInput2 = readLine()
      if (userInput2 == "opnieuw"){
-         play()
+         play(rounds, taal)
      } else {
          println("Goodbye!")
      }
