@@ -24,12 +24,12 @@ class Duolingo( taal: String) {
         FrenchWord("serpent", "slang")
     )
     init {
-        println("Choose difficulty easy or hard")
+        println("Kies je moeilijkheidsgraad (makkelijk - moeilijk)")
         val roundsWord = readLine()!!
         var rounds = 0
-        if (roundsWord == "easy"){
+        if (roundsWord == "makkelijk"){
             rounds = 5
-        } else if (roundsWord == "hard"){
+        } else if (roundsWord == "moeilijk"){
             rounds = 10}
         else {
             throw Exception("moeilijkheidsgraad niet gevonden")
@@ -46,11 +46,15 @@ class Duolingo( taal: String) {
             println("vertaal " + currentWord.original + " in het Nederlands")
             val userInput = readLine()
             if (userInput == currentWord.translated) {
+               currentWord.difficulty = currentWord.difficulty - 1
                 println("Correct!")
                 chosenWords.remove(currentWord)
             } else {
+                currentWord.difficulty = currentWord.difficulty + 2
                 println("Helaas, " + currentWord.translated + " is het juiste antwoord, probeer straks eens opnieuw ")
             }
+
+            println("moeilijkheidsgraad woord = ${currentWord.difficulty}")
 
             when {
                 chosenWords.count() == 0 -> println("Gefeliciteerd!")
@@ -62,7 +66,7 @@ class Duolingo( taal: String) {
         println("Je hebt alle woorden vertaald! Type opnieuw om nog eens te spelen.")
         val userInput2 = readLine()
         if (userInput2 == "opnieuw") {
-            play(chosenWords)
+            main()
         } else {
             println("Goodbye!")
         }
