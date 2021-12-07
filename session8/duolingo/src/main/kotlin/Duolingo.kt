@@ -1,4 +1,6 @@
-class Duolingo(rounds: Int, taal: String) {
+import kotlin.math.round
+
+class Duolingo( taal: String) {
     val words = mutableListOf<Word>(
         EnglishWord("cat", "kat"),
         FrenchWord("chat", "kat"),
@@ -22,6 +24,17 @@ class Duolingo(rounds: Int, taal: String) {
         FrenchWord("serpent", "slang")
     )
     init {
+        println("Choose difficulty easy or hard")
+        val roundsWord = readLine()!!
+        var rounds = 0
+        if (roundsWord == "easy"){
+            rounds = 5
+        } else if (roundsWord == "hard"){
+            rounds = 10}
+        else {
+            throw Exception("moeilijkheidsgraad niet gevonden")
+            Duolingo(taal)
+        }
     var randomWords =  words.shuffled().filter { it.language == taal }.take(rounds).toMutableList()
         play(randomWords)
     }
