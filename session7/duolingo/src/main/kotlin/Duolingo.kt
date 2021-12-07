@@ -1,60 +1,74 @@
-class Duolingo {
-     val words = mutableListOf<Word>(Word("cat", "kat", "Engels"), Word("chat", "kat","Frans"),
-                         Word("dog", "hond","Engels"),
-                         Word("chien", "hond","Frans"),
-                         Word("bunny", "konijn","Engels"),
-                         Word("lapin", "konijn","Frans"),
-                         Word("fish", "vis","Engels"),
-                         Word("poisson", "vis","Frans"),
-                         Word("horse", "paard","Engels"),
-                         Word("cheval", "paard","Frans"),
-                         Word("goat", "geit","Engels"),
-                         Word("chevre", "geit","Frans"),
-                         Word("chicken", "kip","Engels"),
-                         Word("poulet", "kip","Frans"),
-                         Word("mouse", "muis","Engels"),
-                         Word("souris", "muis","Frans"),
-                         Word("donkey", "ezel","Engels"),
-                         Word("ane", "ezel","Frans"),
-                         Word("snake", "slang","Engels"),
-                         Word("serpent", "slang","Frans"),
+class Duolingo(rounds: Int, taal: String) {
+    val words = mutableListOf<Word>(
+        EnglishWord("cat", "kat"),
+        FrenchWord("chat", "kat"),
+        EnglishWord("dog", "hond"),
+        FrenchWord("chien", "hond"),
+        EnglishWord("bunny", "konijn"),
+        FrenchWord("lapin", "konijn"),
+        EnglishWord("fish", "vis"),
+        FrenchWord("poisson", "vis"),
+        EnglishWord("horse", "paard"),
+        FrenchWord("cheval", "paard"),
+        EnglishWord("goat", "geit"),
+        FrenchWord("chevre", "geit"),
+        EnglishWord("chicken", "kip"),
+        FrenchWord("poulet", "kip"),
+        EnglishWord("mouse", "muis"),
+        FrenchWord("souris", "muis"),
+        EnglishWord("donkey", "ezel"),
+        FrenchWord("ane", "ezel"),
+        EnglishWord("snake", "slang"),
+        FrenchWord("serpent", "slang")
+    )
+    init {
+    var randomWords = mutableListOf<Word>()
+        when (taal) {
+            "Frans" -> {
+               randomWords =  words.shuffled().filterIsInstance<FrenchWord>().take(rounds).toMutableList()
 
-     )
+            }
+            "Engels" -> {
+                randomWords = words.shuffled().filterIsInstance<EnglishWord>().take(rounds).toMutableList()
 
- fun play(rounds:Int, taal:String){
-     val chosenWords = words.filter{it.language == taal}.shuffled().take(rounds).toMutableSet()
+            }
+            else -> {
+                println("this language is not available")
+                main()
+            }
+        }
+        play(randomWords)
+    }
 
+    fun play(chosenWords:MutableList<Word>) {
 
-     while(chosenWords.count() > 0){
-         val currentWord = chosenWords.random()
-         println("vertaal " + currentWord.original + " in het Nederlands")
-         val userInput = readLine()
-             if (userInput == currentWord.translated){
-                 println("Correct!")
-                 chosenWords.remove(currentWord)
-             } else {
-                 println("Helaas, " + currentWord.translated + " is het juiste antwoord, probeer straks eens opnieuw ")
-             }
+        while (chosenWords.count() > 0) {
+            val currentWord = chosenWords.random()
+            println("vertaal " + currentWord.original + " in het Nederlands")
+            val userInput = readLine()
+            if (userInput == currentWord.translated) {
+                println("Correct!")
+                chosenWords.remove(currentWord)
+            } else {
+                println("Helaas, " + currentWord.translated + " is het juiste antwoord, probeer straks eens opnieuw ")
+            }
 
-         when{
-             chosenWords.count()==0 -> println("Gefeliciteerd!")
-             chosenWords.count()>0 ->  println("Nog " +chosenWords.count()+ " woorden te vertalen")
-         }
+            when {
+                chosenWords.count() == 0 -> println("Gefeliciteerd!")
+                chosenWords.count() > 0 -> println("Nog " + chosenWords.count() + " woorden te vertalen")
+            }
 
-     }
+        }
 
-     println("Je hebt alle woorden vertaald! Type opnieuw om nog eens te spelen.")
-     val userInput2 = readLine()
-     if (userInput2 == "opnieuw"){
-         play(rounds, taal)
-     } else {
-         println("Goodbye!")
-     }
+        println("Je hebt alle woorden vertaald! Type opnieuw om nog eens te spelen.")
+        val userInput2 = readLine()
+        if (userInput2 == "opnieuw") {
+            play(chosenWords)
+        } else {
+            println("Goodbye!")
+        }
 
-     }
-
-
-
- }
+    }
+}
 
 
