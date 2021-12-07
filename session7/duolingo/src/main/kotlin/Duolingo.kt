@@ -22,21 +22,7 @@ class Duolingo(rounds: Int, taal: String) {
         FrenchWord("serpent", "slang")
     )
     init {
-    var randomWords = mutableListOf<Word>()
-        when (taal) {
-            "Frans" -> {
-               randomWords =  words.shuffled().filterIsInstance<FrenchWord>().take(rounds).toMutableList()
-
-            }
-            "Engels" -> {
-                randomWords = words.shuffled().filterIsInstance<EnglishWord>().take(rounds).toMutableList()
-
-            }
-            else -> {
-                println("this language is not available")
-                main()
-            }
-        }
+    var randomWords =  words.shuffled().filter { it.language == taal }.take(rounds).toMutableList()
         play(randomWords)
     }
 
